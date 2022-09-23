@@ -188,7 +188,7 @@ class Ui_MainWindow(object):
         self.toolBox.addItem(self.page, u"\u5bfc\u5165")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 221, 124))
+        self.page_2.setGeometry(QRect(0, 0, 426, 278))
         self.verticalLayout_6 = QVBoxLayout(self.page_2)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.horizontalLayout_9 = QHBoxLayout()
@@ -381,6 +381,7 @@ class Ui_MainWindow(object):
         self.listWidget_2 = QListWidget(self.frame)
         self.listWidget_2.setObjectName(u"listWidget_2")
         self.listWidget_2.setMaximumSize(QSize(16777215, 50))
+        self.listWidget_2.setSelectionMode(QAbstractItemView.MultiSelection)
         self.listWidget_2.setFlow(QListView.LeftToRight)
 
         self.verticalLayout_7.addWidget(self.listWidget_2)

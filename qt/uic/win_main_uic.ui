@@ -360,8 +360,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>221</width>
-                <height>124</height>
+                <width>426</width>
+                <height>278</height>
                </rect>
               </property>
               <attribute name="label">
@@ -710,6 +710,9 @@
                <width>16777215</width>
                <height>50</height>
               </size>
+             </property>
+             <property name="selectionMode">
+              <enum>QAbstractItemView::MultiSelection</enum>
              </property>
              <property name="flow">
               <enum>QListView::LeftToRight</enum>
