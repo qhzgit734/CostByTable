@@ -36,37 +36,20 @@ class Ui_MainWindow(object):
         self.groupBox_2.setObjectName(u"groupBox_2")
         self.groupBox_2.setMinimumSize(QSize(0, 250))
         self.groupBox_2.setMaximumSize(QSize(450, 16777215))
-        self.gridLayout_4 = QGridLayout(self.groupBox_2)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.verticalLayout_9 = QVBoxLayout(self.groupBox_2)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.pushButton_2 = QPushButton(self.groupBox_2)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setMaximumSize(QSize(400, 16777215))
 
-        self.gridLayout_4.addWidget(self.pushButton_2, 0, 0, 1, 1)
+        self.verticalLayout_9.addWidget(self.pushButton_2)
 
         self.label_10 = QLabel(self.groupBox_2)
         self.label_10.setObjectName(u"label_10")
         self.label_10.setMinimumSize(QSize(0, 50))
         self.label_10.setWordWrap(True)
 
-        self.gridLayout_4.addWidget(self.label_10, 1, 0, 1, 1)
-
-        self.horizontalLayout_11 = QHBoxLayout()
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.checkBox = QCheckBox(self.groupBox_2)
-        self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setChecked(True)
-
-        self.horizontalLayout_11.addWidget(self.checkBox)
-
-        self.pushButton_3 = QPushButton(self.groupBox_2)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMaximumSize(QSize(400, 16777215))
-
-        self.horizontalLayout_11.addWidget(self.pushButton_3)
-
-
-        self.gridLayout_4.addLayout(self.horizontalLayout_11, 3, 0, 1, 1)
+        self.verticalLayout_9.addWidget(self.label_10)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -83,11 +66,44 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.comboBox_2)
 
 
-        self.gridLayout_4.addLayout(self.horizontalLayout_6, 2, 0, 1, 1)
+        self.verticalLayout_9.addLayout(self.horizontalLayout_6)
+
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label_2 = QLabel(self.groupBox_2)
+        self.label_2.setObjectName(u"label_2")
+
+        self.horizontalLayout.addWidget(self.label_2)
+
+        self.pushButton_10 = QPushButton(self.groupBox_2)
+        self.pushButton_10.setObjectName(u"pushButton_10")
+        self.pushButton_10.setMaximumSize(QSize(40, 16777215))
+
+        self.horizontalLayout.addWidget(self.pushButton_10)
+
+
+        self.verticalLayout_9.addLayout(self.horizontalLayout)
+
+        self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.checkBox = QCheckBox(self.groupBox_2)
+        self.checkBox.setObjectName(u"checkBox")
+        self.checkBox.setChecked(True)
+
+        self.horizontalLayout_11.addWidget(self.checkBox)
+
+        self.pushButton_3 = QPushButton(self.groupBox_2)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setMaximumSize(QSize(400, 16777215))
+
+        self.horizontalLayout_11.addWidget(self.pushButton_3)
+
+
+        self.verticalLayout_9.addLayout(self.horizontalLayout_11)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_4.addItem(self.verticalSpacer_2, 4, 0, 1, 1)
+        self.verticalLayout_9.addItem(self.verticalSpacer_2)
 
 
         self.gridLayout.addWidget(self.groupBox_2, 1, 1, 1, 1)
@@ -172,7 +188,7 @@ class Ui_MainWindow(object):
         self.toolBox.addItem(self.page, u"\u5bfc\u5165")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 426, 278))
+        self.page_2.setGeometry(QRect(0, 0, 221, 124))
         self.verticalLayout_6 = QVBoxLayout(self.page_2)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.horizontalLayout_9 = QHBoxLayout()
@@ -273,6 +289,23 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_14 = QHBoxLayout()
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.label_4 = QLabel(self.tab_2)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setMinimumSize(QSize(350, 0))
+        self.label_4.setMaximumSize(QSize(16777215, 16777215))
+
+        self.horizontalLayout_14.addWidget(self.label_4)
+
+        self.pushButton_11 = QPushButton(self.tab_2)
+        self.pushButton_11.setObjectName(u"pushButton_11")
+        self.pushButton_11.setMaximumSize(QSize(40, 16777215))
+
+        self.horizontalLayout_14.addWidget(self.pushButton_11)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer)
+
         self.pushButton_7 = QPushButton(self.tab_2)
         self.pushButton_7.setObjectName(u"pushButton_7")
         self.pushButton_7.setMinimumSize(QSize(300, 0))
@@ -388,10 +421,12 @@ class Ui_MainWindow(object):
         self.groupBox_2.setTitle(QCoreApplication.translate("MainWindow", u"\u76ee\u6807\u6587\u4ef6\uff1a", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u5bfc\u5165\u76ee\u6807\u6587\u4ef6", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u5730\u5740\uff1a", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"excel\u6807\u7b7e\u9875:", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u5339\u914d\u4f9d\u636e:", None))
+        self.pushButton_10.setText(QCoreApplication.translate("MainWindow", u"\u786e\u8ba4", None))
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"\u8986\u76d6\u975e\u7a7a\u6570\u636e", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"\u590d\u7528\u6570\u636e", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"excel\u6807\u7b7e\u9875:", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u5339\u914d\u4f9d\u636e\uff1a", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u4f9d\u636e\uff1a", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u5e93\u6587\u4ef6\uff1a", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u5bfc\u5165\u6570\u636e\u5e93\u6587\u4ef6", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u5730\u5740:", None))
@@ -408,13 +443,15 @@ class Ui_MainWindow(object):
         self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"\u5bfc\u5165\u65b0\u6e05\u5355\u6587\u4ef6", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"excel\u6807\u7b7e\u9875\uff1a", None))
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u5730\u5740:", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u5bf9\u6bd4\u4f9d\u636e:", None))
+        self.pushButton_11.setText(QCoreApplication.translate("MainWindow", u"\u786e\u8ba4", None))
         self.pushButton_7.setText(QCoreApplication.translate("MainWindow", u"\u5bf9\u6bd4", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u5bf9\u6bd4\u62a5\u544a\uff1a", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"\u65e7\u6e05\u5355:", None))
         self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"\u5bfc\u5165\u65e7\u6e05\u5355\u6587\u4ef6", None))
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"excel\u6807\u7b7e\u9875\uff1a", None))
         self.label_15.setText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u5730\u5740:", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u5bf9\u6bd4\u4f9d\u636e:", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u4f9d\u636e:", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"\u6e05\u5355\u5bf9\u6bd4", None))
         self.menu.setTitle(QCoreApplication.translate("MainWindow", u"\u5173\u4e8e", None))
     # retranslateUi

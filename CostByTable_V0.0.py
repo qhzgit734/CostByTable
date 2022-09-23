@@ -12,29 +12,24 @@ from qt.uic import win_main_uic, win_h_uic
 
 # 设置全局变量
 # 公共
-columns_data = ['项目名称及特征描述', '单位', '人工费①', '材料费②', '主材名称', '主材单价', 
-            '机械费③', '管理费、规费、风险费等④', '利润⑤']
-
-index_key = '项目名称及特征描述'
-# data
-path_data = 'data.xlsx'
-sheet_data = 'Sheet1'
-
-nan_key = ['项目名称及特征描述', '主材名称']
-ex_key = ['主材名称']
-# target
-path_target = '安装报价20220908.xls'
-sheet_target = 'A2楼机电'
+columns_data = []
+index_key = []
+# 数据库
+path_data = ''
+sheet_data = ''
+nan_key = []
+ex_key = []
+# 目标文件
+path_target = ''
+sheet_target = ''
 orwt = bool
-
-n3 = int()
 n4 = int()
 # 清单对比
-path_cpr = '清单.xlsx'
-path_cpr_new = '清单-新.xlsx'
-sheet_cpr1 = 'Sheet1'
-sheet_cpr2 = 'Sheet1'
-cols = 'a1'
+path_cpr = ''
+path_cpr_new = ''
+sheet_cpr1 = ''
+sheet_cpr2 = ''
+cpr_key = []
 rpt = ''
 cpr_info = ''
 
@@ -47,13 +42,14 @@ class PandasPro:
         pd.set_option('display.unicode.east_asian_width', True)
         
     def process(self):
-        global n3, n4
+        global n4
         # 读取excel 
         df1 = pd.read_excel(path_data, sheet_name=sheet_data, header=0)
         df2 = pd.read_excel(path_target, sheet_name=sheet_target, header=0)
         # 数据处理
-        df1.dropna(subset=[index_key], inplace=True)
-        df1.drop_duplicates(subset=[index_key], inplace=True)
+        # 当为多个依据的list时，dropna只要有一个依据空就删整行，drop_duplicates多个依据组合在一起重复才会删除整行
+        df1.dropna(subset=index_key, inplace=True)
+        df1.drop_duplicates(subset=index_key, inplace=True)
         pro_df1 = df1.set_index(index_key, drop=False)
         
         pro_df2 = df2.set_index(index_key, drop=False)
@@ -66,10 +62,8 @@ class PandasPro:
         or_df2.update(or_df1, overwrite=orwt, filter_func=None)
         new_df2 = or_df2.copy()
         c = new_df2.compare(or_df3)
-        n2 = new_df2[index_key].isnull().sum()
-        n3 = len(new_df2.index) - n2
         n4 = len(c.index)
-        print('匹配情况:' + '\n' + str(n4) + '/' + str(n3))
+        print('匹配数:' + str(n4))
         # 保存excel
         path_target1 = os.path.join(os.path.dirname(path_target), '匹配结果.xlsx')
         if os.path.isfile(path_target1):
@@ -83,9 +77,9 @@ class PandasPro:
         ex_df1 = pd.read_excel(path_data, sheet_name=sheet_data, header=0)
         # 数据处理
         # ex_df1.columns = columns_data
+        # ex_df1.set_index(index_key, drop=True, inplace=True)
         ex_df1.dropna(subset=nan_key, inplace=True)
         ex_df1.drop_duplicates(subset=ex_key, inplace=True)
-        # ex_df1.set_index(index_key, drop=True, inplace=True)
         # 保存excel
         path_data1 = os.path.join(os.path.dirname(path_data), '数据库.xlsx')
         with pd.ExcelWriter(path_data1) as writer:
@@ -97,7 +91,7 @@ class PandasPro:
         df1 = pd.read_excel(path_cpr, sheet_name=sheet_cpr1, header=0)
         df2 = pd.read_excel(path_cpr_new, sheet_name=sheet_cpr2, header=0)
         # 对比excel
-        c = datacompy.Compare(df1=df1, df2=df2, join_columns=cols, ignore_spaces=True)
+        c = datacompy.Compare(df1=df1, df2=df2, join_columns=cpr_key, ignore_spaces=True)
         df_intst = c.intersect_rows
         df_mis = c.all_mismatch()
         df1_unq_rows = c.df1_unq_rows
@@ -142,7 +136,8 @@ class CreatRoot(QMainWindow):
         self.win_ui.pushButton_7.clicked.connect(self.compr)
         self.win_ui.pushButton_8.clicked.connect(self.ex)
         self.win_ui.pushButton_9.clicked.connect(self.ex)
-        
+        self.win_ui.pushButton_10.clicked.connect(self.ex)
+        self.win_ui.pushButton_11.clicked.connect(self.ex)
         self.win_ui.comboBox.currentIndexChanged.connect(self.cbx)
         self.win_ui.comboBox_2.currentIndexChanged.connect(self.cbx)
         self.win_ui.comboBox_3.currentIndexChanged.connect(self.cbx)
@@ -162,21 +157,28 @@ class CreatRoot(QMainWindow):
 
         elif self.sender().objectName() == 'comboBox_4':
             sheet_cpr2 = self.win_ui.comboBox_4.currentText()
-   
         else:
             pass
         
     def ex(self):
-        global nan_key, ex_key
+        global nan_key, ex_key, index_key, cpr_key
         text_list = self.win_ui.listWidget.selectedItems()
         text = [i.text() for i in list(text_list)]
         
         if self.sender().objectName() == 'pushButton_8':
-            nan_key = list(text)
+            nan_key = text
             self.win_ui.label_13.setText('去空值依据:' + str(nan_key))
         elif self.sender().objectName() == 'pushButton_9':
-            ex_key = list(text)
+            ex_key = text
             self.win_ui.label_14.setText('去重复项依据:' + str(ex_key))
+        elif self.sender().objectName() == 'pushButton_10':
+            index_key = text
+            self.win_ui.label_2.setText('匹配依据:' + str(index_key))
+        elif self.sender().objectName() == 'pushButton_11':
+            text_list = self.win_ui.listWidget_2.selectedItems()
+            text = [i.text() for i in list(text_list)]
+            cpr_key = text
+            self.win_ui.label_4.setText('对比依据:' + str(cpr_key))    
         else:
             pass
             
@@ -249,18 +251,18 @@ class CreatRoot(QMainWindow):
         widget_o.win.show()
         
     def repeat(self):
-        global index_key, orwt
+        global orwt
+        
         if self.win_ui.label_9.text() != '文件地址:' and self.win_ui.label_10.text() != '文件地址:':
             pp = PandasPro()
             
             try:   
                 # 通用功能
-                index_key = self.win_ui.listWidget.currentItem().text()
-                print(index_key)
+                # index_key = self.win_ui.listWidget.currentItem().text()
                 orwt = self.win_ui.checkBox.isChecked()
                 pp.process()
                 QMessageBox.information(window_main, '提示', 
-                                        '匹配情况:' + str(n4) + '/' + str(n3) + '\n' + 
+                                        '匹配数:' + str(n4) + '\n' + 
                                         '详见源目录:匹配结果.xlsx！')
             except:
                 QMessageBox.information(window_main, '提示', 
@@ -271,7 +273,7 @@ class CreatRoot(QMainWindow):
                                         '请确认已选择excel文件')
             
     def expt(self):
-        global nan_key, ex_key
+        
         if self.win_ui.label_9.text() != '文件地址:':
             pp = PandasPro()
             
@@ -287,12 +289,11 @@ class CreatRoot(QMainWindow):
                                         '请确认已选择excel文件')
             
     def compr(self):
-        global cols
+        
         if self.win_ui.label_15.text() != '文件地址:' and self.win_ui.label_18.text() != '文件地址:': 
             pp = PandasPro()
             
             try:
-                cols = self.win_ui.listWidget_2.currentItem().text()
                 pp.cpr()
                 self.win_ui.textBrowser.setPlainText(rpt)
                 QMessageBox.information(window_main, '提示', cpr_info)
@@ -316,7 +317,6 @@ class CreatWinAbout(QWidget):
     
     def open_git(self):
         QDesktopServices.openUrl(QUrl("https://github.com/qhzgit734?tab=repositories"))
-
 # 类-主程序 
 if __name__ == "__main__":
     # 类实例

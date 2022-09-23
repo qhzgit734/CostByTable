@@ -48,8 +48,8 @@
           <property name="title">
            <string>目标文件：</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_4">
-           <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
             <widget class="QPushButton" name="pushButton_2">
              <property name="maximumSize">
               <size>
@@ -62,7 +62,7 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
+           <item>
             <widget class="QLabel" name="label_10">
              <property name="minimumSize">
               <size>
@@ -78,7 +78,57 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>excel标签页:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_2"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>匹配依据:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_10">
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>确认</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_11">
              <item>
               <widget class="QCheckBox" name="checkBox">
@@ -105,33 +155,7 @@
              </item>
             </layout>
            </item>
-           <item row="2" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout_6">
-             <item>
-              <widget class="QLabel" name="label_3">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>100</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string>excel标签页:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBox_2"/>
-             </item>
-            </layout>
-           </item>
-           <item row="4" column="0">
+           <item>
             <spacer name="verticalSpacer_2">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -180,7 +204,7 @@
               </size>
              </property>
              <property name="text">
-              <string>选择匹配依据：</string>
+              <string>选择依据：</string>
              </property>
             </widget>
            </item>
@@ -336,8 +360,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>426</width>
-                <height>278</height>
+                <width>221</width>
+                <height>124</height>
                </rect>
               </property>
               <attribute name="label">
@@ -511,6 +535,51 @@
         <item row="2" column="0" colspan="2">
          <layout class="QHBoxLayout" name="horizontalLayout_14">
           <item>
+           <widget class="QLabel" name="label_4">
+            <property name="minimumSize">
+             <size>
+              <width>350</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>对比依据:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_11">
+            <property name="maximumSize">
+             <size>
+              <width>40</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>确认</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="pushButton_7">
             <property name="minimumSize">
              <size>
@@ -630,7 +699,7 @@
               </size>
              </property>
              <property name="text">
-              <string>选择对比依据:</string>
+              <string>选择依据:</string>
              </property>
             </widget>
            </item>
