@@ -14,6 +14,10 @@ from qt.uic import win_main_uic, win_h_uic
 # 公共
 columns_data = []
 index_key = []
+df_a = pd.DataFrame()
+df_b = pd.DataFrame()
+df_c = pd.DataFrame()
+df_d = pd.DataFrame()
 # 数据库
 path_data = ''
 sheet_data = ''
@@ -148,15 +152,27 @@ class CreatRoot(QMainWindow):
 
         if self.sender().objectName() == 'comboBox':
             sheet_data = self.win_ui.comboBox.currentText()
+            columns_data = df_a[sheet_data].columns
+            self.win_ui.listWidget.clear()
+            self.win_ui.listWidget.addItems(columns_data)
 
         elif self.sender().objectName() == 'comboBox_2':
             sheet_target = self.win_ui.comboBox_2.currentText()
+            columns_data = df_b[sheet_target].columns
+            self.win_ui.listWidget.clear()
+            self.win_ui.listWidget.addItems(columns_data)
 
         elif self.sender().objectName() == 'comboBox_3':
             sheet_cpr1 = self.win_ui.comboBox_3.currentText()
+            columns_data = df_c[sheet_cpr1].columns
+            self.win_ui.listWidget_2.clear()
+            self.win_ui.listWidget_2.addItems(columns_data)
 
         elif self.sender().objectName() == 'comboBox_4':
             sheet_cpr2 = self.win_ui.comboBox_4.currentText()
+            columns_data = df_d[sheet_cpr2].columns
+            self.win_ui.listWidget_2.clear()
+            self.win_ui.listWidget_2.addItems(columns_data)
         else:
             pass
         
@@ -184,7 +200,7 @@ class CreatRoot(QMainWindow):
             
     def import_file(self):
         global path_data, path_target, path_cpr, path_cpr_new, sheet_data, sheet_target, columns_data,\
-            sheet_cpr1, sheet_cpr2
+            sheet_cpr1, sheet_cpr2, df_a, df_b, df_c, df_d
             
         filepath, _ = QFileDialog.getOpenFileName(self.win, '选择文件', '.\\', '文件类型 (*.xlsx *.xls)')
 
@@ -192,13 +208,13 @@ class CreatRoot(QMainWindow):
             path_data = filepath
             self.win_ui.label_9.setText('文件地址:' + filepath)
             try:
-                df1 = pd.read_excel(path_data, sheet_name=None, header=0)
+                df_a = pd.read_excel(path_data, sheet_name=None, header=0)
                 self.win_ui.comboBox.clear()
                 self.win_ui.listWidget.clear()
-                list_sheet1 = list(df1)
+                list_sheet1 = list(df_a)
                 self.win_ui.comboBox.addItems(list_sheet1)
                 sheet_data = self.win_ui.comboBox.currentText()
-                columns_data = df1[sheet_data].columns 
+                columns_data = df_a[sheet_data].columns 
                 self.win_ui.listWidget.addItems(columns_data)
             except FileNotFoundError:
                 self.win_ui.comboBox.clear()
@@ -206,13 +222,13 @@ class CreatRoot(QMainWindow):
             path_target = filepath
             self.win_ui.label_10.setText('文件地址:' + filepath)
             try:
-                df2 = pd.read_excel(path_target, sheet_name=None, header=0)
+                df_b = pd.read_excel(path_target, sheet_name=None, header=0)
                 self.win_ui.comboBox_2.clear()
                 self.win_ui.listWidget.clear()
-                list_sheet2 = list(df2)
+                list_sheet2 = list(df_b)
                 self.win_ui.comboBox_2.addItems(list_sheet2)
                 sheet_target = self.win_ui.comboBox_2.currentText()
-                columns_data = df2[sheet_target].columns 
+                columns_data = df_b[sheet_target].columns 
                 self.win_ui.listWidget.addItems(columns_data)
             except FileNotFoundError:
                 self.win_ui.comboBox_2.clear()
@@ -220,13 +236,13 @@ class CreatRoot(QMainWindow):
             path_cpr = filepath
             self.win_ui.label_15.setText('文件地址:' + filepath)
             try:
-                df3 = pd.read_excel(path_cpr, sheet_name=None, header=0)
+                df_c = pd.read_excel(path_cpr, sheet_name=None, header=0)
                 self.win_ui.comboBox_3.clear()
                 self.win_ui.listWidget_2.clear()
-                list_sheet3 = list(df3)
+                list_sheet3 = list(df_c)
                 self.win_ui.comboBox_3.addItems(list_sheet3)
                 sheet_cpr1 = self.win_ui.comboBox_3.currentText()
-                columns_data = df3[sheet_cpr1].columns
+                columns_data = df_c[sheet_cpr1].columns
                 self.win_ui.listWidget_2.addItems(columns_data) 
             except FileNotFoundError:
                 self.win_ui.comboBox_3.clear()
@@ -234,13 +250,13 @@ class CreatRoot(QMainWindow):
             path_cpr_new = filepath
             self.win_ui.label_18.setText('文件地址:' + filepath)
             try:
-                df4 = pd.read_excel(path_cpr_new, sheet_name=None, header=0)
+                df_d = pd.read_excel(path_cpr_new, sheet_name=None, header=0)
                 self.win_ui.comboBox_4.clear()
                 self.win_ui.listWidget_2.clear()
-                list_sheet4 = list(df4)
+                list_sheet4 = list(df_d)
                 self.win_ui.comboBox_4.addItems(list_sheet4)
                 sheet_cpr2 = self.win_ui.comboBox_4.currentText()
-                columns_data = df4[sheet_cpr2].columns
+                columns_data = df_d[sheet_cpr2].columns
                 self.win_ui.listWidget_2.addItems(columns_data)  
             except FileNotFoundError:
                 self.win_ui.comboBox_4.clear()
