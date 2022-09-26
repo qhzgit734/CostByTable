@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(740, 607)
+        MainWindow.resize(733, 601)
         self.actionhelp = QAction(MainWindow)
         self.actionhelp.setObjectName(u"actionhelp")
         self.centralwidget = QWidget(MainWindow)
@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
 
         self.comboBox_2 = QComboBox(self.groupBox_2)
         self.comboBox_2.setObjectName(u"comboBox_2")
-        self.comboBox_2.setMaximumSize(QSize(200, 16777215))
+        self.comboBox_2.setMaximumSize(QSize(250, 16777215))
 
         self.horizontalLayout_6.addWidget(self.comboBox_2)
 
@@ -74,6 +74,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.label_2 = QLabel(self.groupBox_2)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setWordWrap(True)
 
         self.horizontalLayout.addWidget(self.label_2)
 
@@ -121,7 +122,7 @@ class Ui_MainWindow(object):
         self.toolBox.setObjectName(u"toolBox")
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 335, 278))
+        self.page.setGeometry(QRect(0, 0, 328, 282))
         self.verticalLayout_2 = QVBoxLayout(self.page)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.pushButton = QPushButton(self.page)
@@ -152,7 +153,7 @@ class Ui_MainWindow(object):
         self.comboBox = QComboBox(self.page)
         self.comboBox.setObjectName(u"comboBox")
         self.comboBox.setMinimumSize(QSize(0, 0))
-        self.comboBox.setMaximumSize(QSize(200, 16777215))
+        self.comboBox.setMaximumSize(QSize(250, 16777215))
 
         self.horizontalLayout_4.addWidget(self.comboBox)
 
@@ -166,7 +167,7 @@ class Ui_MainWindow(object):
         self.toolBox.addItem(self.page, u"\u5bfc\u5165")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 322, 124))
+        self.page_2.setGeometry(QRect(0, 0, 328, 282))
         self.verticalLayout_6 = QVBoxLayout(self.page_2)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.horizontalLayout_9 = QHBoxLayout()
@@ -174,6 +175,7 @@ class Ui_MainWindow(object):
         self.label_13 = QLabel(self.page_2)
         self.label_13.setObjectName(u"label_13")
         self.label_13.setMinimumSize(QSize(150, 0))
+        self.label_13.setWordWrap(True)
 
         self.horizontalLayout_9.addWidget(self.label_13)
 
@@ -191,6 +193,7 @@ class Ui_MainWindow(object):
         self.label_14 = QLabel(self.page_2)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setMinimumSize(QSize(150, 0))
+        self.label_14.setWordWrap(True)
 
         self.horizontalLayout_10.addWidget(self.label_14)
 
@@ -217,31 +220,30 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.groupBox, 1, 0, 1, 1)
 
-        self.frame_2 = QFrame(self.tab)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMaximumSize(QSize(16777215, 100))
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.verticalLayout_8 = QVBoxLayout(self.frame_2)
-        self.verticalLayout_8.setSpacing(7)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.verticalLayout_8.setContentsMargins(-1, 11, 11, 11)
-        self.label_8 = QLabel(self.frame_2)
+        self.frame_3 = QFrame(self.tab)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setMaximumSize(QSize(16777215, 90))
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_10 = QVBoxLayout(self.frame_3)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.label_8 = QLabel(self.frame_3)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setMaximumSize(QSize(16777215, 30))
 
-        self.verticalLayout_8.addWidget(self.label_8)
+        self.verticalLayout_10.addWidget(self.label_8)
 
-        self.listWidget = QListWidget(self.frame_2)
+        self.listWidget = QListWidget(self.frame_3)
         self.listWidget.setObjectName(u"listWidget")
-        self.listWidget.setMinimumSize(QSize(0, 50))
-        self.listWidget.setMaximumSize(QSize(16777215, 80))
+        self.listWidget.setMinimumSize(QSize(0, 0))
+        self.listWidget.setMaximumSize(QSize(16777215, 16777215))
         self.listWidget.setSelectionMode(QAbstractItemView.MultiSelection)
         self.listWidget.setFlow(QListView.LeftToRight)
 
-        self.verticalLayout_8.addWidget(self.listWidget)
+        self.verticalLayout_10.addWidget(self.listWidget)
 
 
-        self.gridLayout.addWidget(self.frame_2, 0, 0, 1, 2)
+        self.gridLayout.addWidget(self.frame_3, 0, 0, 1, 2)
 
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QWidget()
@@ -254,6 +256,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.pushButton_6 = QPushButton(self.groupBox_5)
         self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setMinimumSize(QSize(300, 0))
         self.pushButton_6.setMaximumSize(QSize(400, 16777215))
         self.pushButton_6.setLayoutDirection(Qt.LeftToRight)
 
@@ -263,13 +266,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.label_17 = QLabel(self.groupBox_5)
         self.label_17.setObjectName(u"label_17")
-        self.label_17.setMinimumSize(QSize(150, 0))
+        self.label_17.setMinimumSize(QSize(0, 0))
         self.label_17.setMaximumSize(QSize(100, 16777215))
 
         self.horizontalLayout_13.addWidget(self.label_17)
 
         self.comboBox_4 = QComboBox(self.groupBox_5)
         self.comboBox_4.setObjectName(u"comboBox_4")
+        self.comboBox_4.setMaximumSize(QSize(250, 16777215))
 
         self.horizontalLayout_13.addWidget(self.comboBox_4)
 
@@ -297,6 +301,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.pushButton_5 = QPushButton(self.groupBox_4)
         self.pushButton_5.setObjectName(u"pushButton_5")
+        self.pushButton_5.setMinimumSize(QSize(300, 0))
         self.pushButton_5.setMaximumSize(QSize(400, 16777215))
         self.pushButton_5.setLayoutDirection(Qt.LeftToRight)
 
@@ -306,13 +311,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.label_16 = QLabel(self.groupBox_4)
         self.label_16.setObjectName(u"label_16")
-        self.label_16.setMinimumSize(QSize(150, 0))
+        self.label_16.setMinimumSize(QSize(0, 0))
         self.label_16.setMaximumSize(QSize(100, 16777215))
 
         self.horizontalLayout_12.addWidget(self.label_16)
 
         self.comboBox_3 = QComboBox(self.groupBox_4)
         self.comboBox_3.setObjectName(u"comboBox_3")
+        self.comboBox_3.setMaximumSize(QSize(250, 16777215))
 
         self.horizontalLayout_12.addWidget(self.comboBox_3)
 
@@ -331,6 +337,7 @@ class Ui_MainWindow(object):
 
         self.frame = QFrame(self.tab_2)
         self.frame.setObjectName(u"frame")
+        self.frame.setMaximumSize(QSize(16777215, 90))
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.frame)
@@ -343,8 +350,8 @@ class Ui_MainWindow(object):
 
         self.listWidget_2 = QListWidget(self.frame)
         self.listWidget_2.setObjectName(u"listWidget_2")
-        self.listWidget_2.setMinimumSize(QSize(0, 50))
-        self.listWidget_2.setMaximumSize(QSize(16777215, 80))
+        self.listWidget_2.setMinimumSize(QSize(0, 0))
+        self.listWidget_2.setMaximumSize(QSize(16777215, 16777215))
         self.listWidget_2.setSelectionMode(QAbstractItemView.MultiSelection)
         self.listWidget_2.setFlow(QListView.LeftToRight)
 
@@ -357,8 +364,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
         self.label_4 = QLabel(self.tab_2)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setMinimumSize(QSize(300, 0))
-        self.label_4.setMaximumSize(QSize(16777215, 16777215))
+        self.label_4.setMinimumSize(QSize(200, 0))
+        self.label_4.setMaximumSize(QSize(400, 16777215))
+        self.label_4.setWordWrap(True)
 
         self.horizontalLayout_14.addWidget(self.label_4)
 
@@ -398,7 +406,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 740, 26))
+        self.menubar.setGeometry(QRect(0, 0, 733, 26))
         self.menu = QMenu(self.menubar)
         self.menu.setObjectName(u"menu")
         MainWindow.setMenuBar(self.menubar)

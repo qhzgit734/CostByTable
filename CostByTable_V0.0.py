@@ -1,6 +1,7 @@
 # 导入内置库
 import sys
 import os
+
 # 导入第三方库
 from PySide2.QtCore import QUrl
 from PySide2.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox, QWidget, QStyleFactory
@@ -9,7 +10,6 @@ import pandas as pd
 import datacompy
 # 导入.py文件
 from qt.uic import win_main_uic, win_h_uic
-
 # 设置全局变量
 # 公共
 columns_data = []
@@ -148,31 +148,40 @@ class CreatRoot(QMainWindow):
         self.win_ui.comboBox_4.currentIndexChanged.connect(self.cbx)
         
     def cbx(self):
-        global sheet_data, sheet_target, sheet_cpr1, sheet_cpr2
+        global sheet_data, sheet_target, sheet_cpr1, sheet_cpr2, columns_data
 
         if self.sender().objectName() == 'comboBox':
-            sheet_data = self.win_ui.comboBox.currentText()
-            columns_data = df_a[sheet_data].columns
-            self.win_ui.listWidget.clear()
-            self.win_ui.listWidget.addItems(columns_data)
-
+            if self.win_ui.comboBox.currentText() != '':
+                sheet_data = self.win_ui.comboBox.currentText()
+                self.win_ui.listWidget.clear()
+                columns_data = df_a[sheet_data].columns
+                self.win_ui.listWidget.addItems(columns_data)
+            else:
+                pass
         elif self.sender().objectName() == 'comboBox_2':
-            sheet_target = self.win_ui.comboBox_2.currentText()
-            columns_data = df_b[sheet_target].columns
-            self.win_ui.listWidget.clear()
-            self.win_ui.listWidget.addItems(columns_data)
-
+            if self.win_ui.comboBox_2.currentText() != '':
+                sheet_target = self.win_ui.comboBox_2.currentText()
+                self.win_ui.listWidget.clear()
+                columns_data = df_b[sheet_target].columns
+                self.win_ui.listWidget.addItems(columns_data)
+            else:
+                pass
         elif self.sender().objectName() == 'comboBox_3':
-            sheet_cpr1 = self.win_ui.comboBox_3.currentText()
-            columns_data = df_c[sheet_cpr1].columns
-            self.win_ui.listWidget_2.clear()
-            self.win_ui.listWidget_2.addItems(columns_data)
-
+            if self.win_ui.comboBox_3.currentText() != '':
+                sheet_cpr1 = self.win_ui.comboBox_3.currentText()
+                self.win_ui.listWidget_2.clear()
+                columns_data = df_c[sheet_cpr1].columns
+                self.win_ui.listWidget_2.addItems(columns_data)
+            else:
+                pass
         elif self.sender().objectName() == 'comboBox_4':
-            sheet_cpr2 = self.win_ui.comboBox_4.currentText()
-            columns_data = df_d[sheet_cpr2].columns
-            self.win_ui.listWidget_2.clear()
-            self.win_ui.listWidget_2.addItems(columns_data)
+            if self.win_ui.comboBox_4.currentText() != '':
+                sheet_cpr2 = self.win_ui.comboBox_4.currentText()
+                self.win_ui.listWidget_2.clear()
+                columns_data = df_d[sheet_cpr2].columns
+                self.win_ui.listWidget_2.addItems(columns_data)
+            else:
+                pass
         else:
             pass
         
@@ -199,8 +208,7 @@ class CreatRoot(QMainWindow):
             pass
             
     def import_file(self):
-        global path_data, path_target, path_cpr, path_cpr_new, sheet_data, sheet_target, columns_data,\
-            sheet_cpr1, sheet_cpr2, df_a, df_b, df_c, df_d
+        global path_data, path_target, path_cpr, path_cpr_new, df_a, df_b, df_c, df_d
             
         filepath, _ = QFileDialog.getOpenFileName(self.win, '选择文件', '.\\', '文件类型 (*.xlsx *.xls)')
 
@@ -210,12 +218,8 @@ class CreatRoot(QMainWindow):
             try:
                 df_a = pd.read_excel(path_data, sheet_name=None, header=0)
                 self.win_ui.comboBox.clear()
-                self.win_ui.listWidget.clear()
                 list_sheet1 = list(df_a)
                 self.win_ui.comboBox.addItems(list_sheet1)
-                sheet_data = self.win_ui.comboBox.currentText()
-                columns_data = df_a[sheet_data].columns 
-                self.win_ui.listWidget.addItems(columns_data)
             except FileNotFoundError:
                 self.win_ui.comboBox.clear()
         elif self.sender().text() == '导入目标文件':
@@ -224,12 +228,8 @@ class CreatRoot(QMainWindow):
             try:
                 df_b = pd.read_excel(path_target, sheet_name=None, header=0)
                 self.win_ui.comboBox_2.clear()
-                self.win_ui.listWidget.clear()
                 list_sheet2 = list(df_b)
                 self.win_ui.comboBox_2.addItems(list_sheet2)
-                sheet_target = self.win_ui.comboBox_2.currentText()
-                columns_data = df_b[sheet_target].columns 
-                self.win_ui.listWidget.addItems(columns_data)
             except FileNotFoundError:
                 self.win_ui.comboBox_2.clear()
         elif self.sender().text() == '导入旧清单文件':
@@ -238,12 +238,8 @@ class CreatRoot(QMainWindow):
             try:
                 df_c = pd.read_excel(path_cpr, sheet_name=None, header=0)
                 self.win_ui.comboBox_3.clear()
-                self.win_ui.listWidget_2.clear()
                 list_sheet3 = list(df_c)
                 self.win_ui.comboBox_3.addItems(list_sheet3)
-                sheet_cpr1 = self.win_ui.comboBox_3.currentText()
-                columns_data = df_c[sheet_cpr1].columns
-                self.win_ui.listWidget_2.addItems(columns_data) 
             except FileNotFoundError:
                 self.win_ui.comboBox_3.clear()
         elif self.sender().text() == '导入新清单文件':
@@ -252,12 +248,8 @@ class CreatRoot(QMainWindow):
             try:
                 df_d = pd.read_excel(path_cpr_new, sheet_name=None, header=0)
                 self.win_ui.comboBox_4.clear()
-                self.win_ui.listWidget_2.clear()
                 list_sheet4 = list(df_d)
                 self.win_ui.comboBox_4.addItems(list_sheet4)
-                sheet_cpr2 = self.win_ui.comboBox_4.currentText()
-                columns_data = df_d[sheet_cpr2].columns
-                self.win_ui.listWidget_2.addItems(columns_data)  
             except FileNotFoundError:
                 self.win_ui.comboBox_4.clear()
         else:
