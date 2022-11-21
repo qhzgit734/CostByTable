@@ -272,7 +272,11 @@ class CreatRoot(QMainWindow):
                 QMessageBox.information(window_main, '提示', 
                                         '匹配数:' + str(n4) + '\n' + 
                                         '详见源目录:匹配结果.xlsx！')
-            except:
+            except PermissionError:
+                QMessageBox.information(window_main, '提示', 
+                                        '请确认:' + '\n' + 
+                                        '1、源目录:匹配结果.xlsx已关闭后再操作程序')     
+            except KeyError:
                 QMessageBox.information(window_main, '提示', 
                                         '请检查所选excel文件的:' + '\n' + 
                                         '1、请确认依据正确选择!')
@@ -288,7 +292,11 @@ class CreatRoot(QMainWindow):
             try:
                 pp.export()
                 QMessageBox.information(window_main, '提示', '详见源目录:数据库.xlsx！')
-            except:
+            except PermissionError:
+                QMessageBox.information(window_main, '提示', 
+                                        '请确认:' + '\n' + 
+                                        '1、源目录:数据库.xlsx已关闭后再操作程序')
+            except KeyError:
                 QMessageBox.information(window_main, '提示', 
                                         '请检查所选excel文件的:' + '\n' + 
                                         '1、请确认依据正确选择!')
@@ -305,11 +313,15 @@ class CreatRoot(QMainWindow):
                 pp.cpr()
                 self.win_ui.textBrowser.setPlainText(rpt)
                 QMessageBox.information(window_main, '提示', cpr_info)
-            except:
+            except PermissionError:
+                QMessageBox.information(window_main, '提示', 
+                                        '请确认:' + '\n' + 
+                                        '1、源目录:对比结果.xlsx已关闭后再操作程序') 
+            except KeyError:
                 QMessageBox.information(window_main, '提示', 
                                         '请检查所选excel文件的:' + '\n' + 
                                         '1、请确认依据正确选择!')
-                raise
+ 
         else:
             QMessageBox.information(window_main, '提示', 
                                         '请确认已选择excel文件')
