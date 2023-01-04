@@ -3,7 +3,7 @@
 ## Miniconda
 
 1. 下载安装
-[https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/?C=M&amp;O=D](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/?C=M&O=D)
+[https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/?C=M&amp;O=D](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/?C=M&O=D)  
 管理员运行安装，安装时选all users，不添加环境变量。安装完，在高级系统设置中添加系统环境变量  
 | 变量名 | path              | path                      | path                          |
 | ------ | ----------------- | ------------------------- | ----------------------------- |
